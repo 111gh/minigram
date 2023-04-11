@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#wrap {width: 1000px; margin: auto;}
+
+header {height: 100px; background-color: rgb(204, 204, 204);}
+header .logo {width: 400px; height: 50px;}
+header .login-info {width: 900px; height: 100px}
+
+.contents {height: 600px;}
+.contents .sign-up-form {width: 500px; border: 1px solid grey;}
+.contents .timeline {width: 500px; margin: auto;}
+.contents .timeline .timeline-header {height: 30px; background-color: rgb(204, 204, 204);}
+.contents .timeline .comment-header {height: 25px; background-color: rgb(204, 204, 204);}
+
+footer {height: 100px;}

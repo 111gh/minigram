@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.marondalgram.comment.dao.CommentDAO">
+ 	<select id="selectCommentList" parameterType="int" resultType="com.marondalgram.comment.model.Comment">
+	 		SELECT
+	 			`id`
+	 			, `postId`
+	 			, `userId`
+	 			, `userName`
+	 			, `content`
+	 			, `createdAt`
+	 			, `updatedAt`
+	 		FROM
+	 			`comment`
+	 		WHERE
+	 			`postId` = #{postId}
+ 	</select>
+ 	
+ 	<insert id="addComment" parameterType="map">
+ 		INSERT INTO `comment`
+ 		(
+ 			`postId`
+ 			, `userId`
+ 			, `userName`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{postId}
+ 			, #{userId}
+ 			, #{userName}
+ 			, #{content}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	</insert>
+ 	
+ 	<delete id="deleteComment" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`comment`
+ 		WHERE
+ 			`id` = #{commentId}
+ 	</delete>
+ 	
+ 	<delete id="deleteComments" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`comment`
+ 		WHERE
+ 			`postId` = #{postId}
+ 	</delete>
+ 	
+ 	<select id="selectCommentCountByUserId" parameterType="int" resultType="int">
+	 	SELECT
+	 		count(*)
+	 	FROM
+	 		`comment`
+	 	WHERE
+	 		`userId` = #{userId}
+ 	</select>
+ </mapper>
